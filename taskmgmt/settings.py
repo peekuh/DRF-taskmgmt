@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken'
-    'tasks'
+    'rest_framework.authtoken',
+    'tasks',
+    'users'
 ]
 
 
@@ -78,15 +79,16 @@ WSGI_APPLICATION = 'taskmgmt.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default' : {
+    'default': {
         'ENGINE' : 'django.db.backends.postgresql',
         'NAME' : 'taskmgmt2',
-        'USERNAME' : 'postgres',
+        'USER' : 'postgres',
         'PASSWORD' : 'Gungun2711!',
         'HOST' : 'localhost',
         'PORT' : '5432'
-    } 
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -130,5 +132,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    ''
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 }
+

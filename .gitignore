@@ -2,3 +2,4 @@ taskmgmtenv
 __pycache__/
 *.pyc
 *.pyd
+migrations
